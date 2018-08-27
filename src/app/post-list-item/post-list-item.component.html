@@ -1,0 +1,24 @@
+<div style="padding: 20px;" class="container list-group">
+    <li class="col-md-10" style="cursor:pointer" *ngFor="let post of Posts"
+                                      [ngClass]="{ 'list-group-item':true,
+                                                   'list-group-item-success': post.loveIts > '0',
+                                                   'list-group-item-danger': post.loveIts < '0' }">
+      <div class="row">
+        <h6 class="list-group-item pull-right">{{ post.createdAt | date : 'dd/MM/yyyy  HH:mm'}}</h6>
+        <h4 class="list-group-item pull-left">{{ post.title }}</h4>
+      </div><br/>
+      <div class="row">
+        <img style="max-width:600px;" *ngIf="post.photo" [src]="post.photo">
+     </div>
+      <div class="row">
+        <h5 class="list-group-item pull-left">{{ post.content }}</h5>
+      </div>
+      <br/>
+      <div class="row">
+           <button class="btn btn-success pull-left" (click)="onLoveIt()">Love it</button>
+          <button class="btn btn-danger pull-left" (click)="onDontLoveIt()">Don't love it</button>
+          <button class="btn btn-default pull-right" (click)="onRemovePost(post)"> Delete </button>
+      </div>
+        <br/>
+    </li>
+</div>
